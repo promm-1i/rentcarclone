@@ -11,8 +11,11 @@
   --text-gray: #777777;
   --text-light-gray: #a6a6a6;
   --border-gray: #e2e6ec;
+  --bg-paper: #fbfaf7;
   --bg-section: #f5f7fb;
   --bg-white: #ffffff;
+  --card-shadow: 0 6px 20px rgba(28, 40, 58, 0.07);
+  --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   --max-width: 1200px;
 }
 
@@ -29,7 +32,8 @@ body {
 body {
   font-family: "Noto Sans KR", "Malgun Gothic", sans-serif;
   color: var(--text-dark);
-  background: var(--bg-white);
+  background: var(--bg-paper);
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -68,6 +72,13 @@ select {
   font-family: inherit;
 }
 
+/* Shared layout utilities */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
 .section-inner {
   max-width: var(--max-width);
   margin: 0 auto;
@@ -78,6 +89,24 @@ select {
   .section-inner {
     padding: 44px 16px;
   }
+}
+
+.sec-header {
+  text-align: center;
+  margin-bottom: 52px;
+}
+
+.sec-title {
+  font-size: 34px;
+  font-weight: 900;
+  color: var(--navy-dark);
+  margin: 0 0 12px;
+}
+
+.sec-desc {
+  font-size: 15px;
+  color: var(--text-gray);
+  margin: 0;
 }
 
 .section-head {
@@ -100,8 +129,73 @@ select {
   border-bottom: 1px solid var(--text-gray);
 }
 
+/* Shared buttons */
+.btn {
+  padding: 15px 32px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 14px;
+  transition: var(--transition);
+  display: inline-block;
+  text-align: center;
+}
+
+.btn-primary {
+  background-color: var(--red);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background-color: var(--red-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(207, 10, 44, 0.2);
+}
+
+.btn-outline {
+  border: 2px solid var(--navy-dark);
+  color: var(--navy-dark);
+  background: transparent;
+}
+
+.btn-outline:hover {
+  background: var(--navy-dark);
+  color: #fff;
+}
+
+.bg-gray {
+  background-color: var(--bg-section);
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+@media (max-width: 900px) {
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.pill {
+  display: inline-block;
+  background: #f0f3f8;
+  color: var(--navy);
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
 @media (max-width: 600px) {
   body {
-    padding-bottom: 56px;
+    padding-bottom: 65px;
   }
 }

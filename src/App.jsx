@@ -24,7 +24,7 @@ export default function App() {
         <ReviewCards />
         <UsedCarGrid />
         <PromoBanners />
-        <PaymentTable />
+        <PaymentTable onOpenConsult={() => setConsultOpen(true)} />
       </main>
       <Footer />
     </div>

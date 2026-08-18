@@ -1,60 +1,70 @@
 .stats-bar {
-  background: var(--navy-dark);
+  background-color: var(--navy-dark);
+  padding: 30px 0;
   color: #fff;
-  padding: 32px 20px;
-}
-
-.stats-inner {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-  flex-wrap: wrap;
-}
-
-.stats-counter p {
-  margin: 0;
-  font-size: 13px;
-  color: rgba(255, 255, 255, 0.7);
-}
-
-.counter-value {
-  font-size: 22px !important;
-  font-weight: 900;
-  color: var(--gold) !important;
-  font-variant-numeric: tabular-nums;
-  margin: 4px 0 !important;
 }
 
 .stats-grid {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1.5fr repeat(4, 1fr);
+  align-items: center;
   gap: 40px;
 }
 
-.stats-grid li {
+.live-counter {
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  padding-right: 20px;
+}
+
+.live-label {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 4px;
+  display: block;
+}
+
+.live-time {
+  font-family: "SFMono-Regular", Consolas, monospace;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--gold);
+  font-variant-numeric: tabular-nums;
+}
+
+.stat-item {
   text-align: center;
 }
 
-.stats-grid strong {
-  display: block;
+.stat-val {
   font-size: 24px;
-  font-weight: 900;
-  color: #fff;
+  font-weight: 700;
+  display: block;
 }
 
-.stats-grid span {
-  font-size: 12px;
+.stat-lbl {
+  font-size: 13px;
   color: rgba(255, 255, 255, 0.6);
 }
 
-@media (max-width: 700px) {
-  .stats-inner {
-    flex-direction: column;
-    align-items: flex-start;
-  }
+@media (max-width: 900px) {
   .stats-grid {
-    gap: 24px;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .live-counter {
+    grid-column: span 3;
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+  .live-counter {
+    grid-column: span 1;
   }
 }
