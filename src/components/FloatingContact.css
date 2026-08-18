@@ -1,0 +1,139 @@
+.floating-contact {
+  position: fixed;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 200;
+  display: flex;
+  align-items: flex-start;
+}
+
+.floating-toggle {
+  background: var(--navy);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 10px 6px;
+  border-radius: 6px 0 0 6px;
+  writing-mode: vertical-rl;
+}
+
+.floating-contact.closed .floating-toggle {
+  border-radius: 6px;
+}
+
+.floating-panel {
+  width: 220px;
+  background: var(--bg-white);
+  border: 1px solid var(--border-gray);
+  border-radius: 8px 0 0 8px;
+  box-shadow: -4px 0 16px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.floating-block {
+  display: block;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border-gray);
+}
+
+.floating-block:last-child {
+  border-bottom: none;
+}
+
+.floating-label {
+  margin: 0 0 8px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--navy);
+}
+
+.quick-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.quick-form input[type="text"] {
+  padding: 8px 10px;
+  border: 1px solid var(--border-gray);
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.floating-agree {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  color: var(--text-gray);
+  margin: 2px 0;
+}
+
+.floating-agree a {
+  color: var(--blue);
+  text-decoration: underline;
+}
+
+.floating-submit {
+  background: var(--red);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 9px 0;
+  border-radius: 4px;
+  margin-top: 2px;
+}
+
+.floating-success {
+  font-size: 12px;
+  color: var(--blue);
+  margin: 0;
+}
+
+.channel {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.channel-badge {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--text-light-gray);
+  letter-spacing: 0.5px;
+}
+
+.channel strong {
+  font-size: 14px;
+  color: var(--text-dark);
+}
+
+.channel span:last-child {
+  font-size: 11px;
+  color: var(--text-gray);
+}
+
+.channel.kakao strong {
+  color: #3c2a1e;
+}
+
+.channel.naver strong {
+  color: #03c75a;
+}
+
+.channel.phone strong {
+  color: var(--red);
+}
+
+@media (max-width: 900px) {
+  .floating-panel {
+    width: 180px;
+  }
+}
+
+@media (max-width: 600px) {
+  .floating-contact {
+    display: none;
+  }
+}

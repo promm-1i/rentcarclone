@@ -1,0 +1,40 @@
+.used-car-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 16px;
+}
+
+.used-car-card {
+  border: 1px solid var(--border-gray);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.used-car-thumb {
+  aspect-ratio: 4 / 3;
+  background: linear-gradient(135deg, #e4e8ee, #cfd6e0);
+}
+
+.used-car-card h3 {
+  margin: 10px 12px 2px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.used-car-card p {
+  margin: 0 12px 12px;
+  font-size: 11px;
+  color: var(--text-gray);
+}
+
+@media (max-width: 900px) {
+  .used-car-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .used-car-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
