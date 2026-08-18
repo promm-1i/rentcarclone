@@ -1,7 +1,13 @@
+import { useState } from "react";
 import { reviews } from "../data/content";
 import "./ReviewCards.css";
 
+const PREVIEW_COUNT = 3;
+
 export default function ReviewCards() {
+  const [expanded, setExpanded] = useState(false);
+  const visible = expanded ? reviews : reviews.slice(0, PREVIEW_COUNT);
+
   return (
     <section className="reviews" id="reviews">
       <div className="section-inner">
@@ -13,7 +19,7 @@ export default function ReviewCards() {
         </div>
 
         <ul className="review-grid">
-          {reviews.map((r) => (
+          {visible.map((r) => (
             <li key={r.id} className="review-card">
               <h3>{r.model}</h3>
               <p className="review-customer">{r.customer}</p>
@@ -21,6 +27,16 @@ export default function ReviewCards() {
             </li>
           ))}
         </ul>
+
+        {reviews.length > PREVIEW_COUNT && (
+          <button
+            type="button"
+            className="review-toggle"
+            onClick={() => setExpanded((v) => !v)}
+          >
+            {expanded ? "접기" : `후기 더보기 (${reviews.length - PREVIEW_COUNT})`}
+          </button>
+        )}
       </div>
     </section>
   );

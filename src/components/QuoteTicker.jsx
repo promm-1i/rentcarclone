@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import "./QuoteTicker.css";
 
 const names = [
@@ -8,29 +9,28 @@ const models = [
   "아반XX", "쏘나XX", "그랜XX", "투XX", "싼타XX", "펠리세이XX", "스포티XX", "GV70", "G80", "모델 Y",
 ];
 
-function buildEntries() {
-  return names.map((name, i) => ({
-    id: i,
-    text: `${name}님이 [${models[i % models.length]}] 견적문의를 남기셨습니다.`,
-  }));
-}
-
-const entries = buildEntries();
-const loopEntries = [...entries, ...entries];
+const entries = names.map(
+  (name, i) => `${name}님이 [${models[i % models.length]}] 견적문의를 남기셨습니다.`
+);
 
 export default function QuoteTicker() {
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setIndex((v) => (v + 1) % entries.length);
+    }, 2600);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <section className="ticker-section">
       <div className="ticker-inner">
-        <h2 className="ticker-heading">
-          <span>실시간 견적현황</span>
-        </h2>
+        <span className="ticker-badge">실시간 견적현황</span>
         <div className="ticker-viewport">
-          <ul className="ticker-track">
-            {loopEntries.map((e, i) => (
-              <li key={`${e.id}-${i}`}>{e.text}</li>
-            ))}
-          </ul>
+          <p key={index} className="ticker-line">
+            {entries[index]}
+          </p>
         </div>
       </div>
     </section>

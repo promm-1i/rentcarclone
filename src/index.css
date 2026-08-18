@@ -93,3 +93,9 @@ select {
   color: var(--text-gray);
   border-bottom: 1px solid var(--text-gray);
 }
+
+@media (max-width: 600px) {
+  body {
+    padding-bottom: 56px;
+  }
+}

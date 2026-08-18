@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Header from "./components/Header";
 import FloatingContact from "./components/FloatingContact";
 import Hero from "./components/Hero";
@@ -10,12 +11,14 @@ import PaymentTable from "./components/PaymentTable";
 import Footer from "./components/Footer";
 
 export default function App() {
+  const [consultOpen, setConsultOpen] = useState(false);
+
   return (
     <div id="top">
       <Header />
-      <FloatingContact />
+      <FloatingContact open={consultOpen} onOpenChange={setConsultOpen} />
       <main>
-        <Hero />
+        <Hero onOpenConsult={() => setConsultOpen(true)} />
         <StatsBar />
         <QuoteTicker />
         <ReviewCards />

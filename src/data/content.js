@@ -61,29 +61,34 @@ export const heroSlides = [
     tag: "QUICK DELIVERY",
     title: "영업일 5일 내 즉시출고",
     desc: "인기 트림 재고 차량을 지금 바로 확인하세요",
-    cta: "즉시출고 확인하기",
-    href: "#quick-delivery",
-    bg: "linear-gradient(120deg, #2c3a4e 0%, #3c4f69 60%, #506178 100%)",
+    secondaryCta: "즉시출고 확인하기",
+    secondaryHref: "#quick-delivery",
+    bg: "linear-gradient(120deg, #f4f6fa 0%, #e6ebf3 55%, #d8e0ee 100%)",
   },
   {
     id: 2,
     tag: "MONTHLY PAYMENT",
     title: "전 차종 월납입금 한눈에",
     desc: "할부 · 리스 · 장기렌트 실제 월 납입금을 비교해보세요",
-    cta: "월납입금 조회하기",
-    href: "#payment",
-    bg: "linear-gradient(120deg, #1f2a38 0%, #35455c 60%, #46587a 100%)",
+    secondaryCta: "월납입금 조회하기",
+    secondaryHref: "#payment",
+    bg: "linear-gradient(120deg, #f6f4fa 0%, #eae8f3 55%, #dcdcee 100%)",
   },
   {
     id: 3,
     tag: "USED RENTCAR",
     title: "믿을 수 있는 중고 장기렌터카",
     desc: "승계매물부터 반납예정 차량까지 투명하게 공개합니다",
-    cta: "중고차 보러가기",
-    href: "#used-car",
-    bg: "linear-gradient(120deg, #26313f 0%, #3c4f69 60%, #5a6f8f 100%)",
+    secondaryCta: "중고차 보러가기",
+    secondaryHref: "#used-car",
+    bg: "linear-gradient(120deg, #f3f6f5 0%, #e6ede9 55%, #d8e4de 100%)",
   },
 ];
+
+export const heroBadge = {
+  value: "21,578",
+  label: "누적 상담·계약 건수",
+};
 
 export const reviews = [
   {

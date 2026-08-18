@@ -2,8 +2,7 @@ import { useState } from "react";
 import { company } from "../data/content";
 import "./FloatingContact.css";
 
-export default function FloatingContact() {
-  const [open, setOpen] = useState(true);
+export default function FloatingContact({ open, onOpenChange }) {
   const [sent, setSent] = useState(false);
 
   function handleSubmit(e) {
@@ -11,62 +10,70 @@ export default function FloatingContact() {
     setSent(true);
   }
 
-  return (
-    <div className={`floating-contact ${open ? "open" : "closed"}`}>
-      <button
-        type="button"
-        className="floating-toggle"
-        onClick={() => setOpen((v) => !v)}
-      >
-        {open ? "닫기 ▸" : "◂ 빠른상담"}
-      </button>
+  function closePanel() {
+    onOpenChange(false);
+    setSent(false);
+  }
 
-      {open && (
-        <div className="floating-panel">
-          <div className="floating-block quick-form">
-            <p className="floating-label">빠른상담문의</p>
-            {sent ? (
-              <p className="floating-success">상담 신청이 접수되었습니다.</p>
-            ) : (
-              <form onSubmit={handleSubmit}>
-                <input type="text" placeholder="이름" required />
-                <input type="text" placeholder="연락처" required />
-                <label className="floating-agree">
-                  <input type="checkbox" required />
-                  <a href="#privacy">개인정보 취급방침</a> 동의
-                </label>
-                <button type="submit" className="floating-submit">
-                  상담요청하기
-                </button>
-              </form>
-            )}
-          </div>
+  const form = (
+    <div className="contact-popover">
+      <div className="popover-head">
+        <p>빠른 견적문의</p>
+        <button type="button" className="popover-close" onClick={closePanel} aria-label="닫기">
+          ×
+        </button>
+      </div>
 
-          <a
-            href={company.kakaoUrl}
-            className="floating-block channel kakao"
-          >
-            <span className="channel-badge">KAKAOTALK</span>
-            <strong>카카오톡 상담</strong>
-            <span>실시간 상담 바로가기</span>
-          </a>
-
-          <a
-            href={company.naverTalkUrl}
-            className="floating-block channel naver"
-          >
-            <span className="channel-badge">CONTACT US</span>
-            <strong>네이버톡톡상담</strong>
-            <span>실시간 상담 바로가기</span>
-          </a>
-
-          <a href={`tel:${company.phone}`} className="floating-block channel phone">
-            <span className="channel-badge">CALL</span>
-            <strong>{company.phone}</strong>
-            <span>전화상담 바로가기</span>
-          </a>
-        </div>
+      {sent ? (
+        <p className="popover-success">상담 신청이 접수되었습니다.</p>
+      ) : (
+        <form onSubmit={handleSubmit}>
+          <input type="text" placeholder="이름" required />
+          <input type="text" placeholder="연락처" required />
+          <label className="popover-agree">
+            <input type="checkbox" required />
+            <a href="#privacy">개인정보 취급방침</a> 동의
+          </label>
+          <button type="submit" className="popover-submit">
+            상담요청하기
+          </button>
+        </form>
       )}
     </div>
+  );
+
+  return (
+    <>
+      <div className="contact-rail">
+        {open && form}
+        <a href={`tel:${company.phone}`} className="rail-btn phone" title="전화상담">
+          <span>전화</span>
+        </a>
+        <a href={company.kakaoUrl} className="rail-btn kakao" title="카카오톡 상담">
+          <span>카톡</span>
+        </a>
+        <button
+          type="button"
+          className="rail-btn quote"
+          title="견적문의"
+          onClick={() => onOpenChange(!open)}
+        >
+          <span>견적</span>
+        </button>
+      </div>
+
+      <div className="contact-bottombar">
+        {open && form}
+        <a href={`tel:${company.phone}`} className="bar-btn">
+          전화상담
+        </a>
+        <a href={company.kakaoUrl} className="bar-btn">
+          카톡상담
+        </a>
+        <button type="button" className="bar-btn quote" onClick={() => onOpenChange(!open)}>
+          견적문의
+        </button>
+      </div>
+    </>
   );
 }

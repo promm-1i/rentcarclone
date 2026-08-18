@@ -46,3 +46,18 @@
     grid-template-columns: 1fr;
   }
 }
+
+.review-toggle {
+  display: block;
+  margin: 20px auto 0;
+  padding: 10px 28px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--navy);
+  border: 1px solid var(--border-gray);
+  border-radius: 999px;
+}
+
+.review-toggle:hover {
+  background: var(--bg-section);
+}
