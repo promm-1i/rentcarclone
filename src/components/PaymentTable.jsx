@@ -1,7 +1,11 @@
+import { useState } from "react";
 import { paymentModels } from "../data/content";
 import "./PaymentTable.css";
 
 export default function PaymentTable() {
+  const [selectedId, setSelectedId] = useState(paymentModels[0].id);
+  const selected = paymentModels.find((m) => m.id === selectedId);
+
   return (
     <section className="payment-table" id="payment">
       <div className="section-inner">
@@ -9,37 +13,44 @@ export default function PaymentTable() {
           <h2>전차종 월납입금 확인하기</h2>
         </div>
 
-        <div className="payment-tabs">
+        <div className="payment-chips">
           {paymentModels.map((m) => (
-            <span key={m.id} className="payment-tab">
+            <button
+              key={m.id}
+              type="button"
+              className={`payment-chip ${m.id === selectedId ? "active" : ""}`}
+              onClick={() => setSelectedId(m.id)}
+            >
               {m.name}
-            </span>
+            </button>
           ))}
         </div>
 
-        <div className="payment-list-scroll">
-          <ul className="payment-list">
-            {paymentModels.map((m) => (
-              <li key={m.id} className="payment-card">
-                <div className="payment-thumb" aria-hidden="true" />
-                <h3>{m.name}</h3>
-                <p className="payment-price">차량가 {m.price}</p>
-                <ul className="payment-rows">
-                  <li>
-                    <span>장기렌트</span>
-                    <strong>{m.rent}</strong>
-                  </li>
-                  <li>
-                    <span>리스</span>
-                    <strong>{m.lease}</strong>
-                  </li>
-                </ul>
-                <p className="payment-note">
-                  모델, 기간에 따른 할부·리스·렌트 실제 월 납입금 확인
-                </p>
+        <div className="payment-detail">
+          <div className="payment-detail-thumb" aria-hidden="true" />
+
+          <div className="payment-detail-body">
+            <h3>{selected.name}</h3>
+            <p className="payment-detail-price">차량가 {selected.price}</p>
+
+            <ul className="payment-detail-rows">
+              <li>
+                <span>장기렌트</span>
+                <strong>{selected.rent}</strong>
+                <em>/ 월</em>
               </li>
-            ))}
-          </ul>
+              <li>
+                <span>리스</span>
+                <strong>{selected.lease}</strong>
+                <em>/ 월</em>
+              </li>
+            </ul>
+
+            <p className="payment-detail-note">
+              화면의 금액은 조건별 예상 금액이며, 정확한 월 납입금은 상담을
+              통해 확인하실 수 있습니다.
+            </p>
+          </div>
         </div>
       </div>
     </section>

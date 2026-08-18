@@ -1,13 +1,14 @@
 .used-car-grid {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 16px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
 }
 
 .used-car-card {
-  border: 1px solid var(--border-gray);
-  border-radius: 8px;
+  border-radius: 14px;
   overflow: hidden;
+  background: var(--bg-white);
+  box-shadow: 0 6px 20px rgba(28, 40, 58, 0.07);
 }
 
 .used-car-thumb {
@@ -15,26 +16,58 @@
   background: linear-gradient(135deg, #e4e8ee, #cfd6e0);
 }
 
+.used-car-body {
+  padding: 16px;
+}
+
 .used-car-card h3 {
-  margin: 10px 12px 2px;
-  font-size: 14px;
+  margin: 0 0 4px;
+  font-size: 15px;
   font-weight: 700;
 }
 
-.used-car-card p {
-  margin: 0 12px 12px;
+.used-car-spec {
+  margin: 0 0 12px;
   font-size: 11px;
   color: var(--text-gray);
 }
 
+.used-car-stats {
+  display: flex;
+  gap: 10px;
+  margin: 0 0 10px;
+}
+
+.used-car-stats li {
+  font-size: 11px;
+  color: var(--text-gray);
+  padding: 3px 9px;
+  background: var(--bg-section);
+  border-radius: 999px;
+}
+
+.used-car-payment {
+  margin: 0;
+  padding-top: 10px;
+  border-top: 1px solid var(--border-gray);
+  font-size: 12px;
+  color: var(--text-gray);
+}
+
+.used-car-payment strong {
+  font-size: 16px;
+  font-weight: 900;
+  color: var(--navy);
+}
+
 @media (max-width: 900px) {
   .used-car-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 600px) {
   .used-car-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
   }
 }

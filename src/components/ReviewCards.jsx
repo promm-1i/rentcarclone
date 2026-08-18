@@ -21,9 +21,25 @@ export default function ReviewCards() {
         <ul className="review-grid">
           {visible.map((r) => (
             <li key={r.id} className="review-card">
-              <h3>{r.model}</h3>
-              <p className="review-customer">{r.customer}</p>
-              <p className="review-text">{r.text}</p>
+              <div className="review-thumb" aria-hidden="true" />
+              <div className="review-body">
+                <h3>{r.model}</h3>
+                <p className="review-customer">{r.customer}</p>
+
+                <ul className="review-stats">
+                  <li>
+                    <span>출고기간</span>
+                    <strong>{r.deliveryDays}</strong>
+                  </li>
+                  <li>
+                    <span>월 납입금</span>
+                    <strong>{r.monthlyPayment}</strong>
+                  </li>
+                </ul>
+
+                <p className="review-point">{r.point}</p>
+                <p className="review-text">{r.text}</p>
+              </div>
             </li>
           ))}
         </ul>

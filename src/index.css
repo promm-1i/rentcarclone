@@ -10,8 +10,8 @@
   --text-dark: #222222;
   --text-gray: #777777;
   --text-light-gray: #a6a6a6;
-  --border-gray: #dddddd;
-  --bg-section: #f2f2f2;
+  --border-gray: #e2e6ec;
+  --bg-section: #f5f7fb;
   --bg-white: #ffffff;
   --max-width: 1200px;
 }
@@ -71,7 +71,13 @@ select {
 .section-inner {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 60px 20px;
+  padding: 76px 20px;
+}
+
+@media (max-width: 600px) {
+  .section-inner {
+    padding: 44px 16px;
+  }
 }
 
 .section-head {

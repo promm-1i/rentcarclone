@@ -11,21 +11,23 @@
 .promo-card {
   display: block;
   background: var(--bg-white);
-  border-radius: 10px;
-  padding: 26px 20px;
+  border-radius: 14px;
+  padding: 28px 22px;
   min-height: 160px;
-  transition: transform 0.15s ease;
+  box-shadow: 0 6px 20px rgba(28, 40, 58, 0.07);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
 .promo-card:hover {
   transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(28, 40, 58, 0.12);
 }
 
 .promo-subtitle {
   margin: 0 0 8px;
   font-size: 12px;
   font-weight: 700;
-  color: var(--red);
+  color: var(--navy);
 }
 
 .promo-card h3 {

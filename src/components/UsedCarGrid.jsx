@@ -16,8 +16,17 @@ export default function UsedCarGrid() {
           {usedCars.map((car) => (
             <li key={car.id} className="used-car-card">
               <div className="used-car-thumb" aria-hidden="true" />
-              <h3>{car.name}</h3>
-              <p>{car.spec}</p>
+              <div className="used-car-body">
+                <h3>{car.name}</h3>
+                <p className="used-car-spec">{car.spec}</p>
+                <ul className="used-car-stats">
+                  <li>{car.mileage}</li>
+                  <li>{car.remaining}</li>
+                </ul>
+                <p className="used-car-payment">
+                  월 <strong>{car.monthlyPayment}</strong>부터
+                </p>
+              </div>
             </li>
           ))}
         </ul>
