@@ -36,26 +36,32 @@ export const navMenu = [
   { label: "고객센터", href: "#" },
 ];
 
-// Only these 6 Unsplash photo IDs are verified to resolve (HTTP 200) — reused
-// across hero/review/used-car/payment thumbnails instead of one-off IDs that
-// may 404 (several originally supplied IDs did).
-const PHOTO_ID = {
-  bmw5: "photo-1555215695-3004980ad54e",
-  g80: "photo-1583121274602-3e2820c69888",
-  sclass: "photo-1549317661-bd32c8ce0db2",
-  k5: "photo-1541899481282-d53bffe3c35d",
-  gv70: "photo-1503376780353-7e6692767b70",
-  eclass: "photo-1590362891991-f776e747a588",
+// Real product-cut car photos, supplied locally and converted to WebP
+// (public/cars/). One file per model, reused wherever that model appears.
+const CAR = {
+  g80: "/cars/01_genesis_g80.webp",
+  gv70: "/cars/02_genesis_gv70.webp",
+  gv80: "/cars/03_genesis_gv80.webp",
+  grandeur: "/cars/04_hyundai_grandeur.webp",
+  santaFe: "/cars/05_hyundai_santa_fe.webp",
+  palisade: "/cars/06_hyundai_palisade.webp",
+  avanteCn7: "/cars/07_hyundai_avante_cn7.webp",
+  sonataDn8: "/cars/08_hyundai_sonata_dn8.webp",
+  sorentoHybrid: "/cars/09_kia_sorento_hybrid.webp",
+  carnival: "/cars/10_kia_carnival.webp",
+  k8: "/cars/11_kia_k8.webp",
+  k5: "/cars/12_kia_k5.webp",
+  bmw520d: "/cars/13_bmw_5_series_520d.webp",
+  eClass: "/cars/14_mercedes_benz_e_class.webp",
+  sClass: "/cars/15_mercedes_benz_s_class.webp",
+  model3: "/cars/16_tesla_model_3.webp",
+  modelY: "/cars/17_tesla_model_y.webp",
 };
 
-function photoUrl(id, width) {
-  return `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${width}&q=80`;
-}
-
 const HERO_IMG = {
-  bmw5: photoUrl(PHOTO_ID.bmw5, 800),
-  g80: photoUrl(PHOTO_ID.g80, 800),
-  sclass: photoUrl(PHOTO_ID.sclass, 800),
+  bmw5: CAR.bmw520d,
+  g80: CAR.g80,
+  sclass: CAR.sClass,
 };
 
 export const heroSlides = [
@@ -117,18 +123,12 @@ export const tickerItems = [
   { id: 5, region: "대구 수성구", customer: "최**", model: "카니발 하이리무진", status: "즉시출고 확정", timeAgo: "33분 전" },
 ];
 
-const REVIEW_IMG = {
-  suv: photoUrl(PHOTO_ID.bmw5, 200),
-  van: photoUrl(PHOTO_ID.gv70, 200),
-  ev: photoUrl(PHOTO_ID.eclass, 200),
-};
-
 export const reviews = [
   {
     id: 1,
     model: "현대 팰리세이드",
     customer: "이** 고객님 (서울)",
-    image: REVIEW_IMG.suv,
+    image: CAR.palisade,
     deliveryDays: "7일",
     monthlyPayment: "68만원",
     point: "신속한 인도",
@@ -138,7 +138,7 @@ export const reviews = [
     id: 2,
     model: "기아 카니발",
     customer: "정** 고객님 (인천)",
-    image: REVIEW_IMG.van,
+    image: CAR.carnival,
     deliveryDays: "14일",
     monthlyPayment: "52만원",
     point: "합리적 가격",
@@ -148,7 +148,7 @@ export const reviews = [
     id: 3,
     model: "테슬라 모델3",
     customer: "최** 고객님 (광주)",
-    image: REVIEW_IMG.ev,
+    image: CAR.model3,
     deliveryDays: "5일",
     monthlyPayment: "74만원",
     point: "전기차 전문",
@@ -158,7 +158,7 @@ export const reviews = [
     id: 4,
     model: "현대 그랜저",
     customer: "박** 고객님 (대전)",
-    image: REVIEW_IMG.suv,
+    image: CAR.grandeur,
     deliveryDays: "10일",
     monthlyPayment: "58만원",
     point: "친절한 응대",
@@ -168,7 +168,7 @@ export const reviews = [
     id: 5,
     model: "기아 쏘렌토 하이브리드",
     customer: "한** 고객님 (수원)",
-    image: REVIEW_IMG.van,
+    image: CAR.sorentoHybrid,
     deliveryDays: "9일",
     monthlyPayment: "61만원",
     point: "연비 만족",
@@ -178,7 +178,7 @@ export const reviews = [
     id: 6,
     model: "BMW 520d",
     customer: "장** 고객님 (성남)",
-    image: REVIEW_IMG.ev,
+    image: CAR.bmw520d,
     deliveryDays: "16일",
     monthlyPayment: "89만원",
     point: "수입차 전문 상담",
@@ -191,7 +191,7 @@ export const usedCars = [
     id: 1,
     name: "기아 더 뉴 K5",
     spec: "2.0 가솔린 노블레스 | 2021년식",
-    image: photoUrl(PHOTO_ID.k5, 600),
+    image: CAR.k5,
     mileage: "2.4만 km",
     remaining: "잔여 24개월",
     monthlyPayment: "34",
@@ -200,7 +200,7 @@ export const usedCars = [
     id: 2,
     name: "제네시스 GV70",
     spec: "2.5 터보 AWD | 2022년식",
-    image: photoUrl(PHOTO_ID.gv70, 600),
+    image: CAR.gv70,
     mileage: "1.8만 km",
     remaining: "잔여 36개월",
     monthlyPayment: "78",
@@ -209,7 +209,7 @@ export const usedCars = [
     id: 3,
     name: "현대 아반떼 CN7",
     spec: "1.6 가솔린 인스퍼레이션 | 2020년식",
-    image: photoUrl(PHOTO_ID.sclass, 600),
+    image: CAR.avanteCn7,
     mileage: "4.2만 km",
     remaining: "잔여 18개월",
     monthlyPayment: "29",
@@ -218,7 +218,7 @@ export const usedCars = [
     id: 4,
     name: "기아 카니발 4세대",
     spec: "2.2 디젤 9인승 | 2023년식",
-    image: photoUrl(PHOTO_ID.g80, 600),
+    image: CAR.carnival,
     mileage: "1.2만 km",
     remaining: "잔여 48개월",
     monthlyPayment: "58",
@@ -227,7 +227,7 @@ export const usedCars = [
     id: 5,
     name: "벤츠 E-클래스",
     spec: "E300 4MATIC 익스클루시브 | 2019년식",
-    image: photoUrl(PHOTO_ID.eclass, 600),
+    image: CAR.eClass,
     mileage: "3.1만 km",
     remaining: "잔여 12개월",
     monthlyPayment: "92",
@@ -236,7 +236,7 @@ export const usedCars = [
     id: 6,
     name: "현대 쏘나타 DN8",
     spec: "2.0 가솔린 프리미엄 | 2024년식",
-    image: photoUrl(PHOTO_ID.k5, 600),
+    image: CAR.sonataDn8,
     mileage: "0.5만 km",
     remaining: "잔여 58개월",
     monthlyPayment: "41",
@@ -278,28 +278,19 @@ export const promoBanners = [
   },
 ];
 
-const PAYMENT_IMG = [
-  photoUrl(PHOTO_ID.g80, 800),
-  photoUrl(PHOTO_ID.bmw5, 800),
-  photoUrl(PHOTO_ID.sclass, 800),
-  photoUrl(PHOTO_ID.k5, 800),
-  photoUrl(PHOTO_ID.gv70, 800),
-  photoUrl(PHOTO_ID.eclass, 800),
-];
-
 export const paymentModels = [
-  { id: 1, name: "제네시스 G80", year: "2024년형", price: "5,890만원~", rent: "845,000원", lease: "792,000원", downPayment: "30% 기준 / 48개월" },
-  { id: 2, name: "그랜저", year: "2024년형", price: "3,704만원~", rent: "398,200원", lease: "356,700원", downPayment: "20% 기준 / 48개월" },
-  { id: 3, name: "쏘렌토", year: "2024년형", price: "3,381만원~", rent: "421,700원", lease: "334,600원", downPayment: "20% 기준 / 48개월" },
-  { id: 4, name: "싼타페", year: "2024년형", price: "3,602만원~", rent: "438,900원", lease: "349,200원", downPayment: "20% 기준 / 48개월" },
-  { id: 5, name: "카니발", year: "2024년형", price: "4,721만원~", rent: "534,600원", lease: "431,800원", downPayment: "25% 기준 / 48개월" },
-  { id: 6, name: "K8", year: "2024년형", price: "3,986만원~", rent: "459,300원", lease: "372,400원", downPayment: "20% 기준 / 48개월" },
-  { id: 7, name: "GV80", year: "2024년형", price: "7,210만원~", rent: "912,000원", lease: "845,000원", downPayment: "30% 기준 / 48개월" },
-  { id: 8, name: "E-Class", year: "2024년형", price: "8,340만원~", rent: "1,050,000원", lease: "978,000원", downPayment: "35% 기준 / 48개월" },
-  { id: 9, name: "5-Series", year: "2024년형", price: "7,680만원~", rent: "965,000원", lease: "901,000원", downPayment: "35% 기준 / 48개월" },
-  { id: 10, name: "Model 3", year: "2024년형", price: "5,199만원~", rent: "612,000원", lease: "568,000원", downPayment: "20% 기준 / 48개월" },
-  { id: 11, name: "Model Y", year: "2024년형", price: "6,490만원~", rent: "748,000원", lease: "695,000원", downPayment: "20% 기준 / 48개월" },
-].map((m, i) => ({ ...m, image: PAYMENT_IMG[i % PAYMENT_IMG.length] }));
+  { id: 1, name: "제네시스 G80", year: "2024년형", price: "5,890만원~", rent: "845,000원", lease: "792,000원", downPayment: "30% 기준 / 48개월", image: CAR.g80 },
+  { id: 2, name: "그랜저", year: "2024년형", price: "3,704만원~", rent: "398,200원", lease: "356,700원", downPayment: "20% 기준 / 48개월", image: CAR.grandeur },
+  { id: 3, name: "쏘렌토", year: "2024년형", price: "3,381만원~", rent: "421,700원", lease: "334,600원", downPayment: "20% 기준 / 48개월", image: CAR.sorentoHybrid },
+  { id: 4, name: "싼타페", year: "2024년형", price: "3,602만원~", rent: "438,900원", lease: "349,200원", downPayment: "20% 기준 / 48개월", image: CAR.santaFe },
+  { id: 5, name: "카니발", year: "2024년형", price: "4,721만원~", rent: "534,600원", lease: "431,800원", downPayment: "25% 기준 / 48개월", image: CAR.carnival },
+  { id: 6, name: "K8", year: "2024년형", price: "3,986만원~", rent: "459,300원", lease: "372,400원", downPayment: "20% 기준 / 48개월", image: CAR.k8 },
+  { id: 7, name: "GV80", year: "2024년형", price: "7,210만원~", rent: "912,000원", lease: "845,000원", downPayment: "30% 기준 / 48개월", image: CAR.gv80 },
+  { id: 8, name: "E-Class", year: "2024년형", price: "8,340만원~", rent: "1,050,000원", lease: "978,000원", downPayment: "35% 기준 / 48개월", image: CAR.eClass },
+  { id: 9, name: "5-Series", year: "2024년형", price: "7,680만원~", rent: "965,000원", lease: "901,000원", downPayment: "35% 기준 / 48개월", image: CAR.bmw520d },
+  { id: 10, name: "Model 3", year: "2024년형", price: "5,199만원~", rent: "612,000원", lease: "568,000원", downPayment: "20% 기준 / 48개월", image: CAR.model3 },
+  { id: 11, name: "Model Y", year: "2024년형", price: "6,490만원~", rent: "748,000원", lease: "695,000원", downPayment: "20% 기준 / 48개월", image: CAR.modelY },
+];
 
 export const footerColumns = [
   {
